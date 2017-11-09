@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-
 import './App.css';
+import {Provider,connect} from 'react-redux';
+import {createStore} from 'redux';
+import allReducers from './reducers/index';
+import EditorPage from './containers/EditorPage';
+const store =createStore(allReducers);
 
-
-
-import RichText from "./components/RichText"
 class App extends Component {
   render() {
     return (
-      <RichText/>
+      <Provider store={store}>
+        <EditorPage/>
+      </Provider>
     );
   }
 }

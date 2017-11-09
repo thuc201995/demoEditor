@@ -12,7 +12,6 @@ class RichText extends React.Component {
       
         };
       this.focus = () => this.refs.editor.focus();
-      this.onChange = (editorState) => this.setState({editorState});
       this.handleKeyCommand = this._handleKeyCommand.bind(this);
       this.onTab = this._onTab.bind(this);
       this.toggleBlockType = this._toggleBlockType.bind(this);
@@ -22,11 +21,13 @@ class RichText extends React.Component {
        this.onURLInputKeyDown = this._onURLInputKeyDown.bind(this);
        this.confirmMedia = this._confirmMedia.bind(this);
     }
+    onChange = (e) => {this.setState({e}); console.log(e) };
+
     _handleKeyCommand(command, editorState) {
       const newState = RichUtils.handleKeyCommand(editorState, command);
       if (newState) {
-        this.onChange(newState);
-        return true;
+          this.onChange(newState);
+          return true;
       }
       return false;
     }
