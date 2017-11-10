@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {BlockTypeToggle} from '../actions/EditorAction';
+import {AlingmentImage} from '../actions/EditorAction';
 import MediaType from "../components/MediaType";
 
 let mapStateToProps=(state)=>{
@@ -10,8 +10,8 @@ let mapStateToProps=(state)=>{
 
 let mapDispatchToProps=(dispatch)=>{
     return {
-        ToggleBlockType:(payload)=>{
-            dispatch(BlockTypeToggle(payload));
+        ImageAlingment:(contentState,alignment,block)=>{
+            dispatch(AlingmentImage(contentState,alignment,block));
         }
     }
 }

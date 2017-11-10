@@ -87,7 +87,7 @@ const getBlockStyle = (block) => {
             return 'align-left';
         case 'center':
             return 'align-center';
-        case 'right':
+        case '':
             return 'align-right';
         default:
             return null;

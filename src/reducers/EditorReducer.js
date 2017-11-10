@@ -43,6 +43,17 @@ const EditorReducer=(state=defaultState,action)=>{
                 )
             }
             break;
+            case EditorAction.ALINGMENT_IMAGE:
+       
+                action.payload.contentState.mergeEntityData(
+                      action.payload.block,
+                     {alignment: action.payload.alignment} ,
+                );
+                     console.log(state.editorState.getCurrentContent().getEntity( action.payload.block).getData())     
+                return{
+                    editorState:EditorState.push(state.editorState, action.payload.contentState, 'change-block-data')
+                }
+                break;
         default:
             return state;
             break;

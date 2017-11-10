@@ -15,24 +15,25 @@ class MediaType extends React.Component{
         this.props.ToggleBlockType.ToggleBlockType("right");
     }
     render(){
-        console.log(this.props.ToggleBlockType)
+        const {block,contentState,blockProps} = this.props;
+       
         let toolbar="";
         if (this.state.showToolbar) {
             toolbar =
                 <div>
-                   <button onClick={()=>{this.props.ToggleBlockType("right")}}>Right</button>
+                   <button onClick={()=>{this.props.ImageAlingment(contentState,"right",block.getEntityAt(0))}}>Right</button>
                 </div>;
         }
-        const {block,contentState,blockProps} = this.props;
         const entity = contentState.getEntity(
             block.getEntityAt(0)
         );
-        const {src} = entity.getData();
+        const {src,alignment} = entity.getData();
+        console.log(entity.getData())
         return (
-            <div>
+            <div >
                 {toolbar}
-                <div onMouseEnter={this.mountHover}>
-                    <img src={src} alt=""/>
+                <div onMouseEnter={this.mountHover} className={alignment==="right" ? "ailgn-right":""}>
+                    <img src={src} alt="" />
                 </div>
             </div>
 

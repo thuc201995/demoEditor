@@ -27,3 +27,15 @@ export const InsertImage=(url)=>{
         payload:url
     }
 }
+
+export const AlingmentImage=(contentState,alignment,block)=>{
+    return {
+        type: actionType.ALINGMENT_IMAGE,
+        payload:{
+            contentState:contentState,
+            alignment:alignment,
+            block:block,
+          
+        }
+    }
+}
