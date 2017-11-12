@@ -10,14 +10,14 @@ class TextEditor extends Component{
         super(props);
         this.state={
             showURLInput: false,
-            urlValue:""
+            urlValue:"",
         }
     }
 
     addImage=()=>{
         this.setState({
             showURLInput:true,
-
+            cancel:true
         })
     }
     updateEditor=(e)=>{
@@ -31,34 +31,53 @@ class TextEditor extends Component{
         this.props.InsertImage(this.state.urlValue);
         this.setState({
             showURLInput:false,
-            urlValue:""
+            urlValue:"",
+        })
+
+
+    }
+    closeMediaForm=()=>{
+        this.setState({
+            showURLInput:false
         })
     }
     render(){
 
         let urlInput;
-        if (this.state.showURLInput) {
             urlInput =
-                <div>
-                    <input
-                        onChange={this.onURLChange}
-                        name="urlValue"
-                        type="text"
-                        value={this.state.urlValue}
+            <div className="image-modal" visibility="none">
+                <div className="image-modal-header">
+                    <span className="image-modal-header-option">URL
+                        <span className="image-modal-header-label rdw-image-modal-header-label-highlighted"></span>
+                    </span>
+
+                </div>
+                <div className="rimage-modal-url-section">
+                    <input className="image-modal-url-input"
+                           onChange={this.onURLChange}
+                           name="urlValue"
+                           type="text"
+                           value={this.state.urlValue}
                     />
-                    <button onMouseDown={this.confirmMedia}>
-                        Confirm
-                    </button>
-                </div>;
-        }
+                </div>
+                <span className="image-modal-btn-section">
+                        <button className="image-modal-btn" onClick={this.confirmMedia}>Add</button>
+                        <button className="image-modal-btn" onClick={this.closeMediaForm}>Cancel</button>
+                    </span>
+            </div>
+
+
         return(
             <div>
-                <InlineStyleContainer/>
-                <BlockTypeContainer/>
-                <button onMouseDown={this.addImage} style={{marginRight: 10}}>
-                    Add Image
-                </button>
-                {urlInput}
+                <div className="editor-toolbar ">
+                    <InlineStyleContainer/>
+                    <BlockTypeContainer/>
+                    <div onMouseDown={this.addImage} style={{marginRight: 10}} className="option-wrapper">
+                        <img src="./images/image.svg" alt=""/>
+                        {this.state.showURLInput ? urlInput:""}
+
+                    </div>
+                </div>
                 <Editor
                     editorState={this.props.EditorReducer.editorState}
                     onChange={this.updateEditor}

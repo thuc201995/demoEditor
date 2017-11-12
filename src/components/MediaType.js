@@ -8,7 +8,10 @@ class MediaType extends React.Component{
         }
     }
     mountHover=()=>{
-        this.setState({showToolbar:true})
+        const showToolbar = !this.state.showToolbar;
+        this.setState({
+            showToolbar,
+        });
     }
     onAlignment(){
 
@@ -32,8 +35,11 @@ class MediaType extends React.Component{
         return (
             <div >
                 {toolbar}
-                <div onMouseEnter={this.mountHover} className={alignment==="right" ? "ailgn-right":""}>
-                    <img src={src} alt="" />
+                <div
+
+                    className={alignment==="right" ? "ailgn-right":""}
+                >
+                    <img src={src} alt="" onMouseEnter={this.mountHover} onMouseLeave={this.mountHover}/>
                 </div>
             </div>
 

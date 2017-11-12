@@ -10,14 +10,16 @@ class StyleButton extends React.Component {
     }
     render() {
 
-        let className = 'RichEditor-styleButton';
+        let className = 'option-wrapper';
         if (this.props.active) {
-            className += ' RichEditor-activeButton';
+            className += ' option-active';
         }
+        let icon= "./images/"+this.props.icon;
         return (
-            <span className={className} onMouseDown={this.onToggle}>
-          {this.props.label}
-        </span>
+            <div className={className} onMouseDown={this.onToggle}>
+                {this.props.icon ?  <img src={icon}/> : this.props.label}
+
+        </div>
         );
     }
 }

@@ -28,7 +28,7 @@ class BlockType extends React.Component{
             .getType();
 
         return (
-            <div className="RichEditor-controls">
+            <div className="block-wrapper">
                 {BLOCK_TYPES.map((type) =>
                     <StyleButton
                         key={type.label}

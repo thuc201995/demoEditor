@@ -2,10 +2,10 @@ import React from 'react';
 import StyleButton from "./StyleButton";
 
 const INLINE_STYLES = [
-    {label: 'Bold', style: 'BOLD'},
-    {label: 'Italic', style: 'ITALIC'},
-    {label: 'Underline', style: 'UNDERLINE'},
-    {label: 'Monospace', style: 'CODE'},
+    {label: 'Bold', style: 'BOLD',icon:"bold.svg"},
+    {label: 'Italic', style: 'ITALIC',icon: "italic.svg"},
+    {label: 'Underline', style: 'UNDERLINE',icon:"underline.svg"},
+    {label: 'Monospace', style: 'CODE',icon:"monospace.svg"},
 ];
 class InlineStyle extends React.Component{
 
@@ -15,7 +15,7 @@ class InlineStyle extends React.Component{
     render(){
         const currentStyle =this.props.EditorReducer.editorState.getCurrentInlineStyle();
         return (
-            <div className="RichEditor-controls">
+            <div className="inline-wrapper">
                 {INLINE_STYLES.map(type =>
                     <StyleButton
                         key={type.label}
@@ -23,6 +23,7 @@ class InlineStyle extends React.Component{
                         label={type.label}
                         onToggle={this.onToggle}
                         style={type.style}
+                        icon={type.icon}
                     />
                 )}
             </div>
