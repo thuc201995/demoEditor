@@ -6,7 +6,7 @@ const INLINE_STYLES = [
     {label: 'Italic', style: 'ITALIC',icon: "italic.svg"},
     {label: 'Underline', style: 'UNDERLINE',icon:"underline.svg"},
     {label: 'Monospace', style: 'CODE',icon:"monospace.svg"},
-    {label: 'strikethrough',style:"line-through",icon: "strikethrough.svg"},
+    {label: 'strikethrough',style:"STRIKETHROUGH",icon: "strikethrough.svg"},
     
 ];
 class InlineStyle extends React.Component{

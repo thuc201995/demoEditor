@@ -5,6 +5,7 @@ import InlineStyleContainer from "../containers/InlineStyleContainer";
 import MediaContainer from "../containers/MediaContainer";
 import ListStyleContainer from "../containers/ListStyleContainer";
 import AlignTextContainer from "../containers/AlignTextContainer";
+import Immutable from "immutable";
 
 class TextEditor extends Component{
     constructor(props){
@@ -105,11 +106,14 @@ function mediaBlockRenderer(block) {
 }
 const blockRenderMap = Immutable.Map({
     'header-two': {
-      element: 'h2'
+      element: 'h2',
     },
     'unstyled': {
-      element: 'h2'
-    }
+      element: 'unstyled'
+    },
+    'STRIKETHROUGH': {
+        textDecoration: 'line-through',
+      },
   });
 const getBlockStyle = (block) => {
     switch (block.getType()) {
