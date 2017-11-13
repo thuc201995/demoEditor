@@ -21,7 +21,7 @@ class RichText extends React.Component {
        this.onURLInputKeyDown = this._onURLInputKeyDown.bind(this);
        this.confirmMedia = this._confirmMedia.bind(this);
     }
-    onChange = (e) => {this.setState({e}); console.log(e) };
+    onChange = (e) => {this.setState({e});};
 
     _handleKeyCommand(command, editorState) {
       const newState = RichUtils.handleKeyCommand(editorState, command);

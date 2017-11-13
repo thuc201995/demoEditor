@@ -22,6 +22,11 @@ const EditorReducer=(state=defaultState,action)=>{
             return {
                 editorState:RichUtils.toggleInlineStyle(state.editorState, action.payload)
             };
+        case EditorAction.TOOGLE_ALIGN_TYPE:
+            return {
+                editorState:RichUtils.toggleBlockType(state.editorState, action.payload)
+            };
+            break;
         case EditorAction.INSERT_IMAGE:
             const contentState = state.editorState.getCurrentContent();
             const contentStateWithEntity = contentState.createEntity(
@@ -49,7 +54,6 @@ const EditorReducer=(state=defaultState,action)=>{
                       action.payload.block,
                      {alignment: action.payload.alignment} ,
                 );
-                     console.log(state.editorState.getCurrentContent().getEntity( action.payload.block).getData())     
                 return{
                     editorState:EditorState.push(state.editorState, action.payload.contentState, 'change-block-data')
                 }

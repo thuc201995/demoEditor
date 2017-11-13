@@ -3,7 +3,8 @@ import React,{Component} from 'react';
 import BlockTypeContainer from '../containers/BlockTypeContainer';
 import InlineStyleContainer from "../containers/InlineStyleContainer";
 import MediaContainer from "../containers/MediaContainer";
-
+import ListStyleContainer from "../containers/ListStyleContainer";
+import AlignTextContainer from "../containers/AlignTextContainer";
 
 class TextEditor extends Component{
     constructor(props){
@@ -72,6 +73,8 @@ class TextEditor extends Component{
                 <div className="editor-toolbar ">
                     <InlineStyleContainer/>
                     <BlockTypeContainer/>
+                    <ListStyleContainer/>
+                    <AlignTextContainer/>
                     <div onMouseDown={this.addImage} style={{marginRight: 10}} className="option-wrapper">
                         <img src="./images/image.svg" alt=""/>
                         {this.state.showURLInput ? urlInput:""}
@@ -83,6 +86,7 @@ class TextEditor extends Component{
                     onChange={this.updateEditor}
                     blockRendererFn={mediaBlockRenderer}
                     blockStyleFn={getBlockStyle}
+                    blockRenderMap={blockRenderMap}
                 />
             </div>
 
@@ -99,15 +103,37 @@ function mediaBlockRenderer(block) {
     }
     return null;
 }
-
+const blockRenderMap = Immutable.Map({
+    'header-two': {
+      element: 'h2'
+    },
+    'unstyled': {
+      element: 'h2'
+    }
+  });
 const getBlockStyle = (block) => {
     switch (block.getType()) {
+        case 'blockquote':
+            return 'superFancyBlockquote';
+            break;
         case 'left':
             return 'align-left';
+            break;
         case 'center':
             return 'align-center';
-        case '':
+            break;
+        case 'right':
             return 'align-right';
+            break;
+        case 'ALIGNLEFT':
+            return 'text-left'; 
+            break;
+        case 'ALIGNRIGHT':
+            return 'text-right'; 
+            break;
+        case 'ALIGNCENTER':
+            return 'text-center'; 
+            break;
         default:
             return null;
     }

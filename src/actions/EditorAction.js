@@ -14,6 +14,12 @@ export const BlockTypeToggle=(blockType)=>{
     }
 }
 
+export const AlignTypeToggle=(alignType)=>{
+    return {
+        type: actionType.TOOGLE_ALIGN_TYPE,
+        payload:alignType
+    }
+}
 export const InlineStyleToggle=(inlineStyle)=>{
     return {
         type: actionType.TOOGLE_INLINE_STYLE,

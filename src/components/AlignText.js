@@ -1,24 +1,23 @@
 import React from 'react';
-import StyleButton from "./StyleButton";
-
-const INLINE_STYLES = [
-    {label: 'Bold', style: 'BOLD',icon:"bold.svg"},
-    {label: 'Italic', style: 'ITALIC',icon: "italic.svg"},
-    {label: 'Underline', style: 'UNDERLINE',icon:"underline.svg"},
-    {label: 'Monospace', style: 'CODE',icon:"monospace.svg"},
-    {label: 'strikethrough',style:"line-through",icon: "strikethrough.svg"},
-    
+import StyleButton from './StyleButton';
+const ALIGN_STYLE = [
+    {label: 'Align Left', style: 'ALIGNLEFT',icon:"align-left.svg"},
+    {label: 'Align Right', style: 'ALIGNRIGHT',icon:"align-right.svg"},
+    {label: 'Align Center', style: 'ALIGNCENTER',icon:"align-center.svg"},
 ];
-class InlineStyle extends React.Component{
+
+class AlignText  extends React.Component{
 
     onToggle=(style)=>{
-        this.props.ToggleInlineStyle(style)
+        this.props.ToggleAlignType(style)
     }
+    
     render(){
         const currentStyle =this.props.EditorReducer.editorState.getCurrentInlineStyle();
+        
         return (
             <div className="inline-wrapper">
-                {INLINE_STYLES.map(type =>
+                {ALIGN_STYLE.map(type =>
                     <StyleButton
                         key={type.label}
                         active={currentStyle.has(type.style)}
@@ -28,10 +27,10 @@ class InlineStyle extends React.Component{
                         icon={type.icon}
                     />
                 )}
+                
             </div>
         );
     }
 
 }
-
-export default InlineStyle;
+export default AlignText;

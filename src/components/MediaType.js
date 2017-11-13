@@ -23,23 +23,40 @@ class MediaType extends React.Component{
         let toolbar="";
         if (this.state.showToolbar) {
             toolbar =
-                <div>
-                   <button onClick={()=>{this.props.ImageAlingment(contentState,"right",block.getEntityAt(0))}}>Right</button>
+                <div className="image-alignment-options-popup">
+                    <div 
+                        className="option-wrapper image-alignment-option" 
+                        onClick={()=>{this.props.ImageAlingment(contentState,"left",block.getEntityAt(0))}}
+                    >
+                       <img src="./images/image-align-left.svg" />
+                        
+                    </div>
+                    <div 
+                        className="option-wrapper image-alignment-option" 
+                        onClick={()=>{this.props.ImageAlingment(contentState,"center",block.getEntityAt(0))}}
+                    >
+                        <img src="./images/image-align-center.svg" />
+                    </div>
+                    <div 
+                        className="option-wrapper image-alignment-option" 
+                        onClick={()=>{this.props.ImageAlingment(contentState,"right",block.getEntityAt(0))}}
+                    >
+                       <img src="./images/image-align-right.svg" />
+                    </div>
+                
                 </div>;
         }
         const entity = contentState.getEntity(
             block.getEntityAt(0)
         );
         const {src,alignment} = entity.getData();
-        console.log(entity.getData())
         return (
             <div >
-                {toolbar}
+            
                 <div
-
-                    className={alignment==="right" ? "ailgn-right":""}
-                >
-                    <img src={src} alt="" onMouseEnter={this.mountHover} onMouseLeave={this.mountHover}/>
+                    className={alignment==="right" ? "ailgn-right":alignment==="center" ? "align-center":"align-left"}
+                >   {toolbar}
+                    <img src={src} alt="" onMouseEnter={this.mountHover} />
                 </div>
             </div>
 

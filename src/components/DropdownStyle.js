@@ -1,27 +1,28 @@
 import React from 'react';
 
-class StyleButton extends React.Component {
+class DropDownStyle extends React.Component {
     constructor() {
         super();
         this.onToggle = (e) => {
             e.preventDefault();
-            this.props.onToggle(this.props.style);
+            this.props.onToggle(this.props.style,e.target.id);
+            
         };
     }
     render() {
 
-        let className = 'option-wrapper';
+        let className = 'dropdownoption-default';
         if (this.props.active) {
             className += ' option-active';
         }
         let icon= "./images/"+this.props.icon;
         return (
-            <div className={className} onMouseDown={this.onToggle}>
+            <li className={className} onMouseDown={this.onToggle} id={this.props.label}>
                 {this.props.icon ?  <img src={icon}/> : this.props.label}
 
-            </div>
+            </li>
         );
     }
 }
 
-export default StyleButton;
+export default DropDownStyle;

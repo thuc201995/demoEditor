@@ -36,13 +36,19 @@
 }
 .ailgn-right  {
   float: right;
-  text-align: right;
+  padding-left:30px ;
+  justify-content: right;
 }
-.align-center div {
-  text-align: center;
+.align-center  {
+  display: flex;
+  justify-content: center;
 }
-.align-left div {
-  text-align: left;
+.align-left  {
+  float:left;
+  clear:left;
+  padding-right:30px;
+  justify-content: left;
+  display: block
 }
 .active{
   color:red;
@@ -155,17 +161,6 @@
   flex-direction: column;
 }
 
-.rdw-image-alignment-options-popup {
-  position: absolute;;
-  background: white;
-  display: flex;
-  padding: 5px 2px;
-  border-radius: 2px;
-  border: 1px solid #F1F1F1;
-  width: 105px;
-  cursor: pointer;
-  z-index: 100;
-}
 .alignment-option-left {
   justify-content: flex-start;
 }
@@ -193,4 +188,81 @@
 }
 .image-alignment-options-popup-right {
   right: 0;
+}
+.rdw-block-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.block-dropdown {
+  width: 110px;
+}
+.dropdown-wrapper {
+  height: 30px;
+  background: white;
+  cursor: pointer;
+  border: 1px solid #F1F1F1;
+  border-radius: 2px;
+  margin: 0 3px;
+  text-transform: capitalize;
+  background: white;
+}
+.dropdown-optionwrapper {
+  z-index: 100;
+  position: relative;
+  border: 1px solid #F1F1F1;
+  width: 98%;
+  background: white;
+  border-radius: 2px;
+  margin: 0;
+  padding: 0;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+.dropdownoption-default {
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.dropdown-selectedtext {
+  display: flex;
+  position: relative;
+  height: 100%;
+  align-items: center;
+  padding: 0 5px;
+}
+.image-alignment-options-popup {
+  position: absolute;
+  background: white;
+  display: flex;
+  padding: 5px 2px;
+  border-radius: 2px;
+  border: 1px solid #F1F1F1;
+  width: 105px;
+  cursor: pointer;
+  z-index: 100;
+}
+.image-alignment-option {
+  height: 15px;
+  width: 15px;
+  min-width: 15px;
+}
+.image-alignment-option img{
+  width:25px;
+  height: 25px
+}
+
+.text-left{
+  text-align: left
+}
+.text-right{
+  text-align: right
+}
+.text-center{
+  text-align: center
+}
+.line-through{
+  text-decoration:line-through
 }
