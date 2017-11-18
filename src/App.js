@@ -4,6 +4,7 @@ import {Provider,connect} from 'react-redux';
 import {createStore} from 'redux';
 import allReducers from './reducers/index';
 import EditorPage from './containers/EditorPage';
+import Test from "./components/test";
 const store =createStore(allReducers);
 
 class App extends Component {

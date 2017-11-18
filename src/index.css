@@ -3,3 +3,19 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.rdw-image-alignment-options-popup {
+  position: absolute;
+  background: white;
+  display: flex;
+  border-radius: 2px;
+  border: 1px solid #F1F1F1;
+  width: 105px;
+  cursor: pointer;
+  z-index: 100;
+  top :0
+}
+.rdw-image-alignment-option {
+  height: 25px;
+  width: 25px;
+  min-width: 15px;
+}

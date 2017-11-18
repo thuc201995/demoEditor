@@ -1994,6 +1994,13 @@ dotenv@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
+draft-convert@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/draft-convert/-/draft-convert-2.0.0.tgz#e7afbc8054bfb2f53464e6dd47e50125403879d8"
+  dependencies:
+    immutable "~3.7.4"
+    invariant "^2.2.1"
+
 draft-js-export-html@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/draft-js-export-html/-/draft-js-export-html-1.2.0.tgz#1cbe2b78e1fed74fc29c7cdcbfd7540468eca209"
@@ -3275,7 +3282,7 @@ interpret@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
 
-invariant@^2.0.0, invariant@^2.2.2:
+invariant@^2.0.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:

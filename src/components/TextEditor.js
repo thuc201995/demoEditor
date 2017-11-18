@@ -6,6 +6,8 @@ import MediaContainer from "../containers/MediaContainer";
 import ListStyleContainer from "../containers/ListStyleContainer";
 import AlignTextContainer from "../containers/AlignTextContainer";
 import Immutable from "immutable";
+import {convertToHTML} from 'draft-convert';
+import {stateToHTML} from 'draft-js-export-html';
 
 class TextEditor extends Component{
     constructor(props){
@@ -67,8 +69,17 @@ class TextEditor extends Component{
                         <button className="image-modal-btn" onClick={this.closeMediaForm}>Cancel</button>
                     </span>
             </div>
-
-
+let options = {
+    blockRenderers: {
+      atomic: (block) => {
+        let data = block.getData();
+        if (data.get('foo') === 'bar') {
+          return '<div>' + escape(block.getText()) + '</div>';
+        }
+      },
+    },
+  };
+let html = stateToHTML(this.props.EditorReducer.editorState.getCurrentContent(),options);
         return(
             <div>
                 <div className="editor-toolbar ">
@@ -87,8 +98,8 @@ class TextEditor extends Component{
                     onChange={this.updateEditor}
                     blockRendererFn={mediaBlockRenderer}
                     blockStyleFn={getBlockStyle}
-                    blockRenderMap={blockRenderMap}
                 />
+                {<div>{html}</div>}
             </div>
 
         )
@@ -105,11 +116,11 @@ function mediaBlockRenderer(block) {
     return null;
 }
 const blockRenderMap = Immutable.Map({
-    'header-two': {
-      element: 'h2',
-    },
+    'section': {
+        element: 'section'
+      },
     'unstyled': {
-      element: 'unstyled'
+        element: 'p'
     },
     'STRIKETHROUGH': {
         textDecoration: 'line-through',
